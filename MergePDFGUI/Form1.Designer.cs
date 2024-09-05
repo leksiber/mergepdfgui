@@ -38,6 +38,7 @@
             // lbFileList
             // 
             lbFileList.FormattingEnabled = true;
+            lbFileList.HorizontalScrollbar = true;
             lbFileList.ItemHeight = 15;
             lbFileList.Location = new Point(28, 25);
             lbFileList.Name = "lbFileList";
@@ -100,6 +101,7 @@
             Controls.Add(lbFileList);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
         }
 

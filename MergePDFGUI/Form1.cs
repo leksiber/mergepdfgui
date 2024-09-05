@@ -30,6 +30,7 @@ namespace MergePDFGUI
                     if (!lbFileList.Items.Contains(item))
                         lbFileList.Items.Add(item);
                 }
+                enableDisableButtons();
             }
         }
 
@@ -43,6 +44,7 @@ namespace MergePDFGUI
                 {
                     lbFileList.Items.Remove(selectedItems[i]);
                 }
+                enableDisableButtons();
             }
         }
 
@@ -51,6 +53,7 @@ namespace MergePDFGUI
             if (MessageBox.Show("Confirm to clear files?", "Clear Files", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 lbFileList.Items.Clear();
+                enableDisableButtons();
             }
         }
 
@@ -151,6 +154,27 @@ namespace MergePDFGUI
             object data = e.Data.GetData(typeof(String));
             this.lbFileList.Items.Remove(data);
             this.lbFileList.Items.Insert(index, data);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            enableDisableButtons();
+        }
+
+        private void enableDisableButtons()
+        {
+            if (lbFileList.Items.Count > 0)
+            {
+                btnClearFiles.Enabled = true;
+                btnRemoveFiles.Enabled = true;
+                btnMergeFiles.Enabled = true;
+            }
+            else
+            {
+                btnClearFiles.Enabled = false;
+                btnRemoveFiles.Enabled = false;
+                btnMergeFiles.Enabled = false;
+            }
         }
     }
 }
